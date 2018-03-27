@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=nexus
+After=network.target
+
+[Service]
+Type=forking
+ExecStart={{ nexus_workdir }}/bin/nexus start
+ExecReload={{ nexus_workdir }}/bin/nexus restart
+ExecStop={{ nexus_workdir }}/bin/nexus stop
+User={{ nexus_user }}
+Restart=on-abort
+
+[Install]
+Alias=nexus
+WantedBy=multi-user.target
