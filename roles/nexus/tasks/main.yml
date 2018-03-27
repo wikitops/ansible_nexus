@@ -19,16 +19,6 @@
     shell: /bin/bash
     state: present
 
-# - name: NEXUS | Create directories
-#   file:
-#     state: directory
-#     path: "{{ item }}"
-#     owner: "{{ nexus_user }}"
-#     group: "{{ nexus_group }}"
-#     recurse: yes
-#   with_items:
-#     - "{{ nexus_workdir }}"
-
 - name: NEXUS | Unarchive sources
   unarchive:
     src: "{{ nexus_url }}"

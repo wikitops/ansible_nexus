@@ -55,7 +55,7 @@ To deploy the Nexus instance, you just have to run the Ansible playbook nexus.ym
 ansible-playbook nexus.yml
 ```
 
-If everything run has expected, you should access Nexus Web interface : http://10.0.3.21:8081/
+If everything run has expected, you should access Nexus Web interface : http://10.0.3.31:8081/
 
 #### Destroy
 
