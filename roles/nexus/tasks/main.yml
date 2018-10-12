@@ -1,27 +1,23 @@
 ---
 
-- name: NEXUS | Install prerequisites packages
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "openjdk-8-jdk"
+- name: NEXUS | Manage user
+  import_tasks: users.yml
 
-- name: NEXUS | Creat groeup
-  group:
-    name: "{{ nexus_group }}"
+- name: NEXUS | Manage system limits
+  lineinfile:
+    path: /etc/security/limits.conf
+    line: "nexus           -       nofile          65536"
     state: present
 
-- name: NEXUS | Create user
-  user:
-    name: "{{ nexus_user }}"
-    group: "{{ nexus_group }}"
-    shell: /bin/bash
+- name: NEXUS | Manage pam.d on Ubuntu server
+  lineinfile:
+    path: /etc/pam.d/common-session
+    line: "session required        pam_limits.so"
     state: present
 
 - name: NEXUS | Unarchive sources
   unarchive:
-    src: "{{ nexus_url }}"
+    src: "{{ nexus_source_url }}"
     dest: "{{ nexus_install_dir }}"
     owner: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
@@ -73,31 +69,8 @@
     line: "NEXUS_HOME={{ nexus_workdir }}"
     state: present
 
-- name: NEXUS | Link log directory
-  file:
-    state: link
-    src: "{{ nexus_install_dir }}/sonatype-work/nexus3/log"
-    dest: "{{ nexus_logdir }}"
-    owner: "{{ nexus_user }}"
-    group: "{{ nexus_group }}"
+- name: NEXUS | Manage logs
+  import_tasks: logs.yml
 
-- name: NEXUS | Manage system limits
-  lineinfile:
-    path: /etc/security/limits.conf
-    line: "nexus           -       nofile          65536"
-    state: present
-
-- name: NEXUS | Manage pam.d on Ubuntu server
-  lineinfile:
-    path: /etc/pam.d/common-session
-    line: "session required        pam_limits.so"
-    state: present
-
-- name: NEXUS | Deploy Systemd service file
-  template:
-    src: "lib/systemd/system/nexus.service.j2"
-    dest: "/lib/systemd/system/nexus.service"
-    owner: root
-    group: root
-    mode: 0755
-  notify: Restart Nexus
+- name: NEXUS | Manage Systemd
+  import_tasks: systemd.yml

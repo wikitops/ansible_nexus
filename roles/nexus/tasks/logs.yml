@@ -1,0 +1,9 @@
+---
+
+- name: NEXUS LOGS | Link log directory
+  file:
+    state: link
+    src: "{{ nexus_install_dir }}/sonatype-work/nexus3/log"
+    dest: "{{ nexus_logdir }}"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"

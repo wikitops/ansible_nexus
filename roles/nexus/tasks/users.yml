@@ -1,0 +1,13 @@
+---
+
+- name: NEXUS USERS | Manage group
+  group:
+    name: "{{ nexus_group }}"
+    state: present
+
+- name: NEXUS USERS | Manage user
+  user:
+    name: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    shell: /bin/bash
+    state: present

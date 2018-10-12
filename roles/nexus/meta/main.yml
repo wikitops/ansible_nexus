@@ -1,0 +1,13 @@
+---
+
+dependencies:
+
+- role: java
+  vars:
+    java_package: [ "default-jdk" ]
+  when: ansible_os_family == "Debian"
+
+- role: java
+  vars:
+    java_package: [ "java-1.8.0-openjdk" ]
+  when: ansible_os_family == "RedHat"

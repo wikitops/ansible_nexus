@@ -1,0 +1,10 @@
+---
+
+- name: NEXUS SYSTEMD | Manage service
+  template:
+    src: "lib/systemd/system/nexus.service.j2"
+    dest: "/lib/systemd/system/nexus.service"
+    owner: root
+    group: root
+    mode: 0755
+  notify: Restart Nexus

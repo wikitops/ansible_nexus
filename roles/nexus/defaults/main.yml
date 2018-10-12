@@ -1,11 +1,25 @@
 ---
 
+###
+# NEXUS
+###
+
+# Version
+nexus_version: 3.13.0-01
+
+# Source
+nexus_source_url: "http://download.sonatype.com/nexus/3/nexus-{{ nexus_version }}-unix.tar.gz"
+
+# Directories
 nexus_install_dir: /opt
 nexus_workdir: "{{ nexus_install_dir }}/nexus"
 nexus_piddir: /var/run/nexus
+nexus_logdir: /var/log/nexus
+
+# User
 nexus_user: nexus
 nexus_group: nexus
+
+# Configuration
 nexus_port: 8081
 nexus_context_path: /
-nexus_url: "http://download.sonatype.com/nexus/3/latest-unix.tar.gz"
-nexus_logdir: /var/log/nexus
