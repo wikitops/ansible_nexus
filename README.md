@@ -79,3 +79,7 @@ $ vagrant destroy
 ## Author
 
 Member of Wikitops : https://www.wikitops.io/
+
+## Licence
+
+This project is licensed under the Apache License, Version 2.0. For the full text of the license, see the LICENSE file.
