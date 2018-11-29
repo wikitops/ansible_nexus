@@ -1,6 +1,6 @@
-# Ansible : Playbook Nexus
+# Ansible : Playbook Java
 
-The aim of this project is to deploy Nexus on Vagrant instances.
+The aim of this project is to deploy a Java instance on Vagrant instances.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ Be aware that you need to be in the Vagrant directory to be able to run the comm
 
 #### Deployment
 
-To deploy Nexus on Vagrant instances, just run this command :
+To deploy Java on Vagrant instance, just run this command :
 
 ```bash
 $ vagrant up
@@ -40,14 +40,10 @@ $ vagrant status
 
 Current machine states:
 
-nexus01                   running (virtualbox)
+java01                   running (virtualbox)
 ```
 
-If everything run has expected, you should access Nexus Web interface : http://10.0.3.31:8081/
-
-Default login : admin / admin123
-
-Nexus can make one minute to start depending on the server capacity.
+If everything run has expected, you should be able to run java command on the Vagrant instance.
 
 #### Destroy
 
@@ -63,15 +59,15 @@ This section list some simple command to use and manage the playbook and the Vag
 
 #### Update with Ansible
 
-To update the Nexus configuration with Ansible, you just have to run the Ansible playbook nexus.yml with this command :
+To update the Java instance configuration with Ansible, you just have to run the Ansible playbook java.yml with this command :
 
 ```bash
-$ ansible-playbook nexus.yml
+$ ansible-playbook java.yml
 ```
 
 #### Update with Vagrant
 
-To update the Nexus configuration with Vagrant, you just have to run provisioning part of the Vagrant file :
+To update the Java instance configuration with Vagrant, you just have to run provisioning part of the Vagrant file :
 
 ```bash
 $ vagrant provision
@@ -82,7 +78,7 @@ $ vagrant provision
 To be able to connect to a Vagrant instance, you should use the CLI which is configured to automatically use the default SSH key :
 
 ```bash
-$ vagrant ssh nexus01
+$ vagrant ssh java01
 ```
 
 ## Author

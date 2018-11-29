@@ -5,7 +5,7 @@
 ###
 
 # Version
-nexus_version: 3.13.0-01
+nexus_version: 3.14.0-04
 
 # Source
 nexus_source_url: "http://download.sonatype.com/nexus/3/nexus-{{ nexus_version }}-unix.tar.gz"
