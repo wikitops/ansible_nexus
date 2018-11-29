@@ -14,6 +14,7 @@
     path: /etc/pam.d/common-session
     line: "session required        pam_limits.so"
     state: present
+  when: ansible_os_family == "Debian"
 
 - name: NEXUS | Unarchive sources
   unarchive:
